@@ -11,9 +11,9 @@ public class Main2 {
 
         //Variables
         String total = "";
-        int filteredIndex = 0;
         int[] dataPoints = new int[100];
-        int[] filteredDataPoints = new int[filteredIndex];
+        boolean done = false;
+        int index = 0;
 
         //First loop
         for (int i = 0; i < dataPoints.length; i++) {
@@ -21,12 +21,11 @@ public class Main2 {
             dataPoints[i] = num;
 
             if (num == userInt) {
-                filteredDataPoints[filteredIndex] = dataPoints[i];
-                filteredIndex++;
-                System.out.println(dataPoints[i]);
+                index++;
             }
         }
 
+        System.out.println("The number " +userInt+ " was found " +index+ " times.");
 
         //Input Helper
         int userInt2 = InputHelper.getRangedInt(scan,"Please enter another integer between 1 and 100.",1,100);
@@ -34,11 +33,16 @@ public class Main2 {
         //Second loop
         for (int j = 0; j < dataPoints.length; j++) {
             if (dataPoints[j] == userInt2) {
-                filteredDataPoints[filteredIndex] = dataPoints[j];
+                done = true;
+                System.out.println("The first occurence of " +userInt2+ " was " + j);
                 break;
             }
-
         }
+
+        if (!done) {
+            System.out.println("The integer was not found.");
+        }
+
 
 
     }
